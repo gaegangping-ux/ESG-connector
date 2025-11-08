@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글로벌 팜테크 ESG 투자 컨설턴트</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-green: #00A36C;
+            --gold-yellow: #FFD700;
+            --dark-bg: #0a0f0d;
+            --card-bg: #1a1f1d;
+            --text-primary: #ffffff;
+            --text-secondary: #a8b2ad;
+        }
+
+        body {
+            font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 15, 13, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 163, 108, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--deep-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--deep-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            background: radial-gradient(ellipse at top, rgba(0, 163, 108, 0.15), transparent 50%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(0, 163, 108, 0.1), transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+            transform: translateX(-50%);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.6; transform: translateX(-50%) scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(0, 163, 108, 0.2);
+            border: 1px solid var(--deep-green);
+            border-radius: 50px;
+            color: var(--deep-green);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 20px rgba(0, 163, 108, 0.3);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--deep-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--deep-green), #008c5a);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 163, 108, 0.4);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 163, 108, 0.6);
+        }
+
+        /* Section Styles */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        h3 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h3::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--deep-green), var(--gold-yellow));
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Problem Section */
+        .problem {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 4rem 3rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(0, 163, 108, 0.1);
+        }
+
+        .problem-title {
+            font-size: 1.8rem;
+            color: var(--gold-yellow);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .pain-points {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pain-point {
+            padding: 2rem;
+            background: rgba(0, 163, 108, 0.05);
+            border-left: 4px solid var(--deep-green);
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .pain-point:hover {
+            transform: translateX(10px);
+        }
+
+        .pain-point h4 {
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .pain-point p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .quote {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--gold-yellow);
+            font-style: italic;
+            margin-top: 3rem;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        /* Solution Section */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .solution-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 163, 108, 0.2);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, rgba(0, 163, 108, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--deep-green);
+            box-shadow: 0 10px 30px rgba(0, 163, 108, 0.3);
+        }
+
+        .solution-card:hover::before {
+            opacity: 1;
+        }
+
+        .solution-card h4 {
+            color: var(--deep-green);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .solution-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            position: relative;
+        }
+
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, var(--card-bg), rgba(0, 163, 108, 0.05));
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 163, 108, 0.2);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 163, 108, 0.3);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-card h4 {
+            color: var(--gold-yellow);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Trust Section */
+        .trust-table {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 3rem;
+            border: 1px solid rgba(0, 163, 108, 0.1);
+        }
+
+        .trust-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .trust-table th {
+            background: rgba(0, 163, 108, 0.2);
+            color: var(--deep-green);
+            padding: 1.5rem;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        .trust-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(0, 163, 108, 0.1);
+            color: var(--text-secondary);
+        }
+
+        .trust-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .trust-table tr:hover {
+            background: rgba(0, 163, 108, 0.05);
+        }
+
+        /* Pricing Section */
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 163, 108, 0.3);
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--gold-yellow);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: var(--gold-yellow);
+            color: var(--dark-bg);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .pricing-card h4 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .price {
+            font-size: 3rem;
+            color: var(--deep-green);
+            font-weight: 800;
+            margin: 1.5rem 0;
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 163, 108, 0.1);
+            color: var(--text-secondary);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: radial-gradient(ellipse, rgba(0, 163, 108, 0.15), transparent);
+            margin-top: 4rem;
+        }
+
+        .cta-section h3 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-section p {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta-highlight {
+            color: var(--gold-yellow);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--card-bg);
+            border-top: 1px solid rgba(0, 163, 108, 0.1);
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+
+            h3 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .solution-grid,
+            .benefits-grid,
+            .pricing-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">🌱 팜테크 ESG</div>
+            <ul class="nav-links">
+                <li><a href="#problem">문제</a></li>
+                <li><a href="#solution">솔루션</a></li>
+                <li><a href="#benefits">혜택</a></li>
+                <li><a href="#trust">신뢰</a></li>
+                <li><a href="#pricing">가격</a></li>
+                <li><a href="#cta">신청</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">글로벌 팜테크 ESG 투자 컨설턴트</div>
+            <h1>🌍 연구소 기술,<br>글로벌 자본을 만나다</h1>
+            <h2>대전 기반 팜테크 스타트업을 위한<br>'ESG 투자 & 정부 지원금' 유치 극대화 솔루션</h2>
+            <a href="#cta" class="cta-primary">🔥 초기 고객 한정 특별 혜택 확인하기</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem">
+        <div class="problem">
+            <h3 class="problem-title">🔬 당신의 첨단 팜테크 기술은,<br>왜 여전히 '지역'에 머물러 있습니까?</h3>
+            
+            <div class="pain-points">
+                <div class="pain-point">
+                    <h4>💔 투자 단절</h4>
+                    <p>뛰어난 기술력에도 불구하고, 국내 VC는 기술 이해 부족, 글로벌 자본은 낮은 접근성으로 인해 투자 유치에 어려움을 겪고 있습니다.</p>
+                </div>
+                
+                <div class="pain-point">
+                    <h4>📋 복잡한 행정</h4>
+                    <p>지자체 및 정부의 다양한 R&D 및 사업화 자금, ESG 지원금 정보를 통합적으로 파악하고 유치하는 전문 인력이 부재합니다.</p>
+                </div>
+                
+                <div class="pain-point">
+                    <h4>🌱 ESG 대응 미흡</h4>
+                    <p>글로벌 시장 진출을 위해 필수적인 ESG 경영 및 공시 기준에 맞춰 재무 계획을 세우는 전략적 부재가 심각합니다.</p>
+                </div>
+            </div>
+
+            <div class="quote">
+                결국, 기술의 혁신 속도보다 자금 조달의 속도가 느려<br>성장의 골든타임을 놓치고 있습니다.
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution">
+        <h3>✨ 팜테크 기술 상용화의 가속 페달:<br>'융합 금융/행정 컨설팅'</h3>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem; line-height: 1.8;">
+            우리는 단순한 기술 컨설팅이 아닌, 글로벌 투자 동향 분석과 국내 행정/금융 지원 유치를 융합한 차별화된 솔루션을 제공합니다.
+        </p>
+        
+        <div class="solution-grid">
+            <div class="solution-card">
+                <h4>🌐 글로벌 팜테크 트렌드 분석</h4>
+                <p>현재 가장 활발한 해외 투자 동향(해외 VC, 글로벌 기업 등)에 맞춰 기술 포지셔닝 및 시장성 극대화 전략을 수립합니다.</p>
+            </div>
+            
+            <div class="solution-card">
+                <h4>💰 ESG 재무 효율성 극대화</h4>
+                <p>ESG 경영에 특화된 재무 구조를 설계하고, 이를 기반으로 지자체/정부 지원금 유치를 대행하여 실질적인 자본 효율을 높입니다.</p>
+            </div>
+            
+            <div class="solution-card">
+                <h4>🏢 고부가가치 전문가 정주</h4>
+                <p>대전의 R&D 환경을 이해하는 현지 전문가가 KAIST, 연구개발특구진흥재단 등 핵심 기관과의 연계를 주도합니다.</p>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: var(--deep-green); max-width: 800px; margin: 3rem auto 0; font-size: 1.2rem; font-weight: 600;">
+            ✅ 당신의 기술에 투자자들이 이해하고 반응하는 '글로벌 언어'를 입혀드립니다.
+        </p>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits">
+        <h3>📈 이 컨설팅으로 당신이 얻을<br>3가지 혁신적인 성과</h3>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">💰</div>
+                <h4>평균 1.5배 이상의<br>투자 유치 효과</h4>
+                <p>글로벌 팜테크 투자 포트폴리오에 맞춘 IR 자료 및 전략으로, 국내외 VC의 투자 매력도를 획기적으로 향상합니다.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">✅</div>
+                <h4>복잡한 행정 절차<br>제로</h4>
+                <p>지자체 및 정부 지원금의 기획, 신청, 관리까지 원스톱 대행으로 경영진의 행정 부담을 완전히 해소합니다.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">🌱</div>
+                <h4>지속 가능한<br>성장 기반 확보</h4>
+                <p>ESG 투자 기준을 충족하는 경영 보고서 및 기술 상용화 로드맵을 구축하여, 장기적인 기업 가치와 신뢰도를 확보합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section id="trust">
+        <h3>🤝 대전의 핵심 기관 네트워크가<br>보증하는 전문성</h3>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem; line-height: 1.8;">
+            우리의 컨설팅은 대전 지역의 강력한 산·학·연·관 협력 네트워크 위에서 진행됩니다.
+        </p>
+        
+        <div class="trust-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>협력 기관</th>
+                        <th>역할 및 기여</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>대전광역시 투자 유치과</strong></td>
+                        <td>행정 지원 및 지역 자본 연계</td>
+                    </tr>
+                    <tr>
+                        <td><strong>KAIST & 대덕연구단지</strong></td>
+                        <td>최첨단 기술 검증 및 네트워크 확보</td>
+                    </tr>
+                    <tr>
+                        <td><strong>연구개발특구진흥재단</strong></td>
+                        <td>R&D 자금 연계 및 사업화 지원</td>
+                    </tr>
+                    <tr>
+                        <td><strong>대전창조경제혁신센터</strong></td>
+                        <td>창업 육성 및 투자자 네트워킹 확보</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 3rem; padding: 2rem; background: rgba(0, 163, 108, 0.05); border-radius: 15px; border-left: 4px solid var(--deep-green);">
+            <h4 style="color: var(--deep-green); margin-bottom: 1rem; font-size: 1.3rem;">MVP 검증 계획</h4>
+            <p style="color: var(--text-secondary); line-height: 1.8;">
+                현재 <strong>'대전 연구소 기반 팜테크 기술의 글로벌 투자 유치 전략'</strong>에 대한 심층 분석 보고서 및 숏폼 IR 자료 제작을 통해 기술력과 투자 매력도를 검증하는 MVP를 진행하고 있습니다. 검증 대상인 대전 스타트업 경영진의 피드백을 통해 컨설팅 모델의 실효성을 입증하고 있습니다.
+            </p>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <h3>🚀 초기 베타 테스터 프로그램<br>(선착순 3개사 한정)</h3>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem; line-height: 1.8;">
+            창직 서비스 런칭 초기, 검증된 성공 사례 구축을 위해 파격적인 조건의 베타 테스터를 모집합니다.
+        </p>
+        
+        <div class="pricing-container">
+            <div class="pricing-card">
+                <h4>일반 컨설팅</h4>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">(예정가)</p>
+                <div class="price">500만 원</div>
+                <ul class="pricing-features">
+                    <li><strong>초기 진단:</strong> 500만 원</li>
+                    <li><strong>주요 서비스:</strong> 글로벌 투자 전략 수립 및 보고서, 정부 지원금 유치 플랜</li>
+                    <li><strong>성공 보수:</strong> 유치 자금의 5%</li>
+                </ul>
+            </div>
+            
+            <div class="pricing-card featured">
+                <div class="pricing-badge">베타 테스터 특별</div>
+                <h4>베타 테스터 프로그램</h4>
+                <p style="color: var(--gold-yellow); margin-bottom: 1rem; font-weight: 600;">선착순 3개사 한정</p>
+                <div class="price">
+                    <span class="price-original">500만 원</span>
+                    <span style="color: var(--gold-yellow);">무료</span>
+                </div>
+                <ul class="pricing-features">
+                    <li><strong>초기 진단:</strong> <span style="color: var(--gold-yellow); font-weight: 700;">면제 (0원)</span></li>
+                    <li><strong>주요 서비스:</strong> MVP 결과물 기반 심층 컨설팅 제공</li>
+                    <li><strong>성공 보수:</strong> <span style="color: var(--deep-green); font-weight: 700;">유치 자금의 3.5%</span> (2025년 한정)</li>
+                    <li><strong>혜택 마감:</strong> 선착순 3개사 또는 2025년 12월 31일</li>
+                </ul>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: var(--gold-yellow); margin-top: 3rem; font-size: 1.2rem; font-weight: 600;">
+            지금 신청하고, 수백만 원 상당의 초기 진단 서비스를 무료로 받으십시오.
+        </p>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section">
+        <h3>💡 1:1 비밀 컨설팅 신청</h3>
+        <p>
+            잠재된 기술력에 <span class="cta-highlight"
